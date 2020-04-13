@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="56.418736"
+    android:viewportHeight="56.418736">
+  <group android:translateX="-1.4104685"
+      android:translateY="-1.4104685">
+    <group android:translateX="-1.4809918"
+        android:translateY="-1.4809918">
+      <group android:translateX="-1.5550414"
+          android:translateY="-1.5550414">
+        <group android:translateX="-1.6327934"
+            android:translateY="-1.6327934">
+          <group android:translateX="-1.7144331"
+              android:translateY="-1.7144331">
+            <group android:translateX="-1.8001548"
+                android:translateY="-1.8001548">
+              <group android:translateX="-1.8901623"
+                  android:translateY="-1.8901623">
+                <group android:translateX="-1.9846704"
+                    android:translateY="-1.9846704">
+                  <group android:translateX="-2.0839038"
+                      android:translateY="-2.0839038">
+                    <group android:translateX="-2.1880991"
+                        android:translateY="-2.1880991">
+                      <group android:translateX="5.054509"
+                          android:translateY="5.054509">
+                        <group android:translateX="4.498513"
+                            android:translateY="4.498513">
+                            <group
+                                android:translateX="-15.243873"
+                                android:translateY="-15.243873">
+                                <path
+                                    android:pathData="M1,1 H99 V99 H1Z"
+                                    android:strokeColor="@color/colorAccent2">
+                                    <aapt:attr name="android:fillColor">
+                                        <gradient
+                                            android:endX="50"
+                                            android:endY="99"
+                                            android:startX="50"
+                                            android:startY="1"
+                                            android:type="linear">
+                                            <item
+                                                android:color="@color/colorPrimaryDark"
+                                                android:offset="0.4" />
+                                            <item
+                                                android:color="@color/colorAccent2"
+                                                android:offset=".6" />
+                                            <item
+                                                android:color="@color/colorPrimary"
+                                                android:offset=".7" />
+                                        </gradient>
+                                    </aapt:attr>
+                                </path>
+                            </group>
+                        </group>
+                      </group>
+                    </group>
+                  </group>
+                </group>
+              </group>
+            </group>
+          </group>
+        </group>
+      </group>
+    </group>
+  </group>
+</vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources  >
+    <string name="app_name">Benefits</string>
+    <string name="msg_login">Sign In</string>
+    <string name="msg_put_id">Put your Id.</string>
+    <string name="msg_put_password">Put your password.</string>
+</resources>
