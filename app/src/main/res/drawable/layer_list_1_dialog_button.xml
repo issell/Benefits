@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Bottom 2dp Shadow -->
+    <item>
+        <shape  android:shape="rectangle">
+            <corners android:radius="@dimen/browser_actions_context_menu_min_padding" />
+            <gradient
+                android:angle="90"
+                android:endColor="@android:color/transparent"
+                android:startColor="#A0d8d8d8" />
+        </shape>
+    </item>
+    <item
+        android:bottom="3dp"
+        android:right="3dp">
+        <shape
+            android:shape="rectangle"
+            android:visible="true">
+            <solid android:color="@color/colorAccent2" />
+            <corners android:radius="@dimen/browser_actions_context_menu_min_padding" />
+            <gradient
+                android:angle="180"
+                android:endColor="@color/colorAccent"
+                android:startColor="@color/colorAccent3" />
+        </shape>
+    </item>
+</layer-list>

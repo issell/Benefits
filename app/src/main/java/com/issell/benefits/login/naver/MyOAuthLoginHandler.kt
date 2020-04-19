@@ -1,4 +1,4 @@
-package com.issell.benefits.naverlogin
+package com.issell.benefits.login.naver
 
 import android.content.Context
 import android.util.Log

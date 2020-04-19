@@ -1,4 +1,4 @@
-package com.issell.benefits.utils
+package com.issell.benefits.util
 
 import android.content.Context
 

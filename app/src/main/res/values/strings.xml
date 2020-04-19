@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resources  >
+<resources>
     <string name="app_name">Benefits</string>
     <string name="msg_login">Sign In</string>
     <string name="msg_put_id">Put your Id.</string>
     <string name="msg_put_password">Put your password.</string>
+
+    <!--Success Dialog-->
+    <string name="success_title">Oh Yeah!!</string>
+    <string name="success_message">Whatever you did, it was a huge success =D.</string>
+    <string name="success_button_text">OK, Cool</string>
+    <string name="content_description_base_dialog_icon">Imagem do Diálogo</string>
+
+    <!--Error Dialog-->
+    <string name="error_title">Oh snap :/</string>
+    <string name="error_message">Something went terribly wrong\n(probably my fault)</string>
+    <string name="error_button_text">OK, no problem</string>
+
+    <!-- Internet Connection Error Dialog -->
+    <string name="error_internet_title">Oh snap :/</string>
+    <string name="error_internet_message">Please be sure that internet is connected\nand try it later.</string>
+    <string name="error_internet_button_text">I\'ll be right back!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
