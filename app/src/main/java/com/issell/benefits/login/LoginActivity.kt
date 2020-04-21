@@ -5,8 +5,10 @@ import android.os.Bundle
 import com.issell.benefits.R
 import com.issell.benefits.util.ActivityUtils
 
+// NOTE Whenever released-version of APK are newly compiled (not debug),
+//  it requires to reedit the hash key via https://developers.kakao.com/console/app/423852/config/platform
+
 class LoginActivity : AppCompatActivity(){
-    private var presenter:LoginPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,15 +24,6 @@ class LoginActivity : AppCompatActivity(){
                 supportFragmentManager, loginFragment, R.id.frame_layout
             )
         }
-
-
-        presenter = LoginPresenter(this, loginFragment)
-        if(presenter != null) {
-            // View 에 Presenter 주입
-            loginFragment.setPresenter(presenter!!)
-
-        }
-
     }
 }
 

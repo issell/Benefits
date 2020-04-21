@@ -2,6 +2,7 @@ package com.issell.benefits.login
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ import com.issell.benefits.customview.MyDialog
 import com.issell.progressbar.SimpleProgressBar
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-
+import java.lang.ClassCastException
 
 
 object LoginFragment : Fragment(), LoginContract.View{
@@ -21,11 +22,16 @@ object LoginFragment : Fragment(), LoginContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        presenter = LoginPresenter(context!!, this)
+        Log.e("aa", "1111111111")
         if(presenter != null) {
-            // 네트워크 확인
-            presenter!!.checkNetwork()
+            // View 에 Presenter 주입
+            if(presenter is LoginPresenter)
+                setPresenter(presenter!! as LoginPresenter)
+            else
+                throw ClassCastException("The presenter on LoginView is must the type of LoginPresenter.")
         }
-        // TODO 자동 로그인 확인
+        presenter!!.start()
     }
 
     override fun onCreateView(
@@ -44,7 +50,7 @@ object LoginFragment : Fragment(), LoginContract.View{
 
     override fun showNaverLoginButton(handler:OAuthLoginHandler) {
         if(null != view)
-            view!!.findViewById<OAuthLoginButton>(R.id.buttonOAuthLoginImg).setOAuthLoginHandler(handler)
+            view!!.findViewById<OAuthLoginButton>(R.id.naver_login_button).setOAuthLoginHandler(handler)
     }
 
     override fun createProgressbar(): SimpleProgressBar {
@@ -71,5 +77,9 @@ object LoginFragment : Fragment(), LoginContract.View{
     override fun onResume() {
         super.onResume()
         presenter!!.start()
+    }
+
+    override fun finish() {
+        finish()
     }
 }

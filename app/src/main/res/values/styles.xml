@@ -7,11 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="LoginButton">
-        <item name="android:layout_height">68dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:padding">8dp</item>
+    <style name="LoginButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_width">290dp</item>
+        <item name="android:padding">3dp</item>
+<!--        <item name="android:shadowDx">16</item>-->
+<!--        <item name="android:shadowDy">16</item>-->
+<!--        <item name="android:shadowRadius">50</item>-->
+<!--        <item name="android:shadowColor">#EE313031</item>-->
     </style>
 
     <!-- dialog button (neutral) -->

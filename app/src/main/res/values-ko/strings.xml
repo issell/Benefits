@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">베네피트</string>
+    <string name="app_name">Benefits</string>
     <string name="msg_login">로그인</string>
     <string name="msg_put_id">아이디를 입력하세요.</string>
     <string name="msg_put_password">패스워드를 입력하세요.</string>

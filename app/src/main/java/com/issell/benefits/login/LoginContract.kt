@@ -22,11 +22,15 @@ interface LoginContract {
         }
 
         fun showConnectionErrorDialog()
+        fun finish()
 
     }
 
     interface Presenter : BasePresenter {
         fun setNaverLoginModule()
+        fun setKakaoLoginModule()
         fun checkNetwork()
+        fun logoutKakao()
+        fun logoutNaver()
     }
 }

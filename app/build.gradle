@@ -21,13 +21,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // should correspond to key/value pairs inside the file
-        buildConfigField("String", "CLIENT_ID", apikeyProperties['CLIENT_ID'])
-        buildConfigField("String", "CLIENT_SECRET", apikeyProperties['CLIENT_SECRET'])
+        buildConfigField("String", "NAVER_CLIENT_ID", apikeyProperties['NAVER_CLIENT_ID'])
+        buildConfigField("String", "NAVER_CLIENT_SECRET", apikeyProperties['NAVER_CLIENT_SECRET'])
+        manifestPlaceholders = [KAKAO_NATIVE_APP_KEY:apikeyProperties['KAKAO_NATIVE_APP_KEY']]
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
         }
     }
     packagingOptions {
@@ -55,14 +59,19 @@ dependencies {
     implementation 'androidx.browser:browser:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    // 카카오 아이디로 로그인
+    implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt',
+            version: project.KAKAO_SDK_VERSION
+
     // 내꺼
-    implementation 'com.github.issell:ProgressBar:1.0.3'
+    implementation 'com.github.issell:ProgressBar:1.0.4'
+    implementation 'com.github.issell:AndroidUtils:1.1.0'
 
     // Material Design
     implementation 'com.google.android.material:material:1.1.0'
 
-    implementation 'com.github.issell:MyModule:1.0.1'
-
     // Guava
     api("com.google.guava:guava:29.0-jre")
+
+
 }
