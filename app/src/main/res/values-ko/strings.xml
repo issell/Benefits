@@ -20,4 +20,10 @@
     <string name="error_internet_title">에러 :/</string>
     <string name="error_internet_message">인터넷 연결이 원활하지 않습니다.\n연결 후 다시 접속해주세요.</string>
     <string name="error_internet_button_text">종료합니다</string>
+
+    <!-- Login Error -->
+    <string name="login_error_network_failed">네트워크 연결이 불안정합니다. 다시 시도해 주세요.</string>
+    <string name="login_error_on_process">로그인 도중 오류가 발생했습니다</string>
+    <string name="login_error_wrong_password">잘못된 비밀번호입니다.</string>
+    <string name="login_error_session_closed">세션이 닫혔습니다. 다시 시도해 주세요.</string>
 </resources>

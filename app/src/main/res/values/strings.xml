@@ -21,6 +21,10 @@
     <string name="error_internet_message">Please be sure that internet is connected\nand try it later.</string>
     <string name="error_internet_button_text">I\'ll be right back!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Login Error -->
+    <string name="login_error_network_failed">Please be sure that internet is connected\nand try it later.</string>
+    <string name="login_error_on_process">An error occurred during on process.</string>
+    <string name="login_error_wrong_password">Got wrong password. Please check again.</string>
+    <string name="login_error_session_closed">The session is closed. Please login again.</string>
+
 </resources>

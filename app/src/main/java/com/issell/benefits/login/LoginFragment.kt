@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.StringRes
 
 import com.issell.benefits.R
 import com.issell.benefits.customview.DialogFactory
@@ -59,10 +61,10 @@ object LoginFragment : Fragment(), LoginContract.View{
             R.drawable.rotate_progress, /*width:*/350, /*height:*/350)
     }
 
-    override fun showConnectionErrorDialog() {
+    override fun showLoginErrorDialog(@StringRes id:Int) {
         val oneButtonDialog = DialogFactory.makeErrorDialog(
             R.string.error_internet_title,
-            R.string.error_internet_message,
+            id,
             R.string.error_internet_button_text,
             object : MyDialog.ButtonDialogAction {
                 override fun onButtonClicked() {
@@ -74,6 +76,14 @@ object LoginFragment : Fragment(), LoginContract.View{
         oneButtonDialog.show(activity!!.supportFragmentManager, MyDialog.TAG)
     }
 
+    override fun showLoginErrorToast(@StringRes id: Int) {
+        Toast.makeText(
+            context,
+            getString(id),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
     override fun onResume() {
         super.onResume()
         presenter!!.start()
@@ -82,4 +92,6 @@ object LoginFragment : Fragment(), LoginContract.View{
     override fun finish() {
         finish()
     }
+
+
 }

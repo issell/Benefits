@@ -2,9 +2,10 @@ package com.issell.benefits.login
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toast
 import com.issell.benefits.BuildConfig
+import com.issell.benefits.R
 import com.issell.benefits.login.kakao.App
+import com.issell.benefits.login.kakao.Callback
 import com.issell.benefits.login.naver.MyOAuthLoginHandler
 import com.kakao.auth.*
 import com.kakao.auth.network.response.AccessTokenInfoResponse
@@ -20,6 +21,7 @@ constructor(
     LoginContract.Presenter {
 
     companion object {
+        const val TAG = "LoginPresenter"
         const val OAUTH_CLIENT_ID = BuildConfig.NAVER_CLIENT_ID
         const val OAUTH_CLIENT_SECRET = BuildConfig.NAVER_CLIENT_SECRET
     }
@@ -33,44 +35,7 @@ constructor(
         }
         override fun onSessionOpened() {
             // 세션 생성
-            AuthService.requestAccessTokenInfo(object :ApiResponseCallback<AccessTokenInfoResponse>(){
-                override fun onFailure(errorResult: ErrorResult) {
-                    val result: Int = errorResult.errorCode
-                    if (result == ErrorCode.CLIENT_ERROR_CODE.errorCode) {
-                        Toast.makeText(context, "네트워크 연결이 불안정합니다. 다시 시도해 주세요.", Toast.LENGTH_SHORT)
-                            .show()
-                        loginView.showConnectionErrorDialog()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            "로그인 도중 오류가 발생했습니다: " + errorResult.errorMessage,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-
-                override fun onSessionClosed(errorResult: ErrorResult?) {
-                    Toast.makeText(
-                        context,
-                        "세션이 닫혔습니다. 다시 시도해 주세요: " + if (errorResult == null) "" else errorResult!!.errorMessage,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                override fun onSuccess(result: AccessTokenInfoResponse?) {
-//                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    if(result == null){
-                        Log.i("KAKAO_API", "result : null")
-                    }
-                    Log.i("KAKAO_API", "사용자 아이디: ${result!!.userId}" )
-                    Log.i("KAKAO_API", "남은 시간 (ms): ${result!!.expiresInMillis}")
-                }
-
-
-                override fun onNotSignedUp() {
-//                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-            })
+            AuthService.requestAccessTokenInfo(Callback(context, this@LoginPresenter))
 
         }
     }
@@ -98,7 +63,7 @@ constructor(
     //
     override fun checkNetwork() {
 //        if (!NetworkStatus.isNetworkConnected(context)) {
-//            loginView.showConnectionErrorDialog()
+//            loginView.showLoginErrorDialog()
 //        }
     }
 
@@ -119,5 +84,40 @@ constructor(
 
     override fun logoutNaver() {
         // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun alertNetworkDisconnected() {
+        loginView.showLoginErrorDialog(R.string.login_error_network_failed)
+    }
+
+
+    override fun alertFailedOnKakako(e:ErrorResult) {
+        Log.e(TAG, e.errorMessage)
+        loginView.showLoginErrorDialog(R.string.login_error_on_process)
+    }
+
+    override fun alertWrongPassword() {
+        loginView.showLoginErrorDialog(R.string.login_error_wrong_password)
+    }
+
+    override fun alertSessionClosed() {
+        loginView.showLoginErrorDialog(R.string.login_error_session_closed)
+    }
+
+    override fun successOnKakao(result: AccessTokenInfoResponse?) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if(result == null){
+            Log.i("KAKAO_API", "result : null")
+        }
+        Log.i("KAKAO_API", "사용자 아이디: ${result!!.userId}" )
+        Log.i("KAKAO_API", "남은 시간 (ms): ${result!!.expiresInMillis}")
+    }
+
+    override fun successOnNaver() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun success() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
