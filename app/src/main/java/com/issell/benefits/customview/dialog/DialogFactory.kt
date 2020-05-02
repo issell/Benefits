@@ -1,4 +1,4 @@
-package com.issell.benefits.customview
+package com.issell.benefits.customview.dialog
 
 import androidx.annotation.StringRes
 import com.issell.benefits.R

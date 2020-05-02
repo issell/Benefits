@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="app_name">Benefits</string>
-    <string name="msg_login">Sign In</string>
-    <string name="msg_put_id">Put your Id.</string>
-    <string name="msg_put_password">Put your password.</string>
 
     <!--Success Dialog-->
-    <string name="success_title">Oh Yeah!!</string>
-    <string name="success_message">Whatever you did, it was a huge success =D.</string>
-    <string name="success_button_text">OK, Cool</string>
-    <string name="content_description_base_dialog_icon">Imagem do Diálogo</string>
 
     <!--Error Dialog-->
-    <string name="error_title">Oh snap :/</string>
     <string name="error_message">Something went terribly wrong\n(probably my fault)</string>
-    <string name="error_button_text">OK, no problem</string>
 
     <!-- Internet Connection Error Dialog -->
     <string name="error_internet_title">Oh snap :/</string>
-    <string name="error_internet_message">Please be sure that internet is connected\nand try it later.</string>
     <string name="error_internet_button_text">I\'ll be right back!</string>
+
+    <!-- Login View-->
+    <string name="login_layout_hint_email">email</string>
+    <string name="login_layout_hint_password">password</string>
+    <string name="login_auto">Remember Me</string>
+    <string name="login_sign_in">Sign In</string>
+    <string name="login_sign_up">Sign Up</string>
+    <string name="login_find_password">I Forgot Password</string>
 
     <!-- Login Error -->
     <string name="login_error_network_failed">Please be sure that internet is connected\nand try it later.</string>
@@ -27,4 +25,14 @@
     <string name="login_error_wrong_password">Got wrong password. Please check again.</string>
     <string name="login_error_session_closed">The session is closed. Please login again.</string>
 
+    <!-- Auto Login Error -->
+    <string name="auto_login_error_title">Auto Sign In Failed :/</string>
+    <string name="auto_login_error_auth_expired">Your previous authentication has been expired.\nPlease sign in again.</string>
+    <string name="auto_login_error_button_text">Go to Sign In</string>
+
+    <!-- Main -->
+    <string name="main_logout_button_text">Log Out</string>
+    <string name="main_logout_success_title">Success :=)</string>
+    <string name="main_logout_success_message">Logged out successfully!</string>
+    <string name="main_logout_success_button_text">Okay!</string>
 </resources>

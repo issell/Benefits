@@ -12,7 +12,7 @@ import org.jetbrains.annotations.TestOnly
 
 
 interface LoginContract {
-    interface View : BaseView<LoginPresenter> {
+    interface View : BaseView<Presenter> {
 
         fun showNaverLoginButton(handler: OAuthLoginHandler)
 
@@ -27,28 +27,25 @@ interface LoginContract {
         }
 
         fun showLoginErrorDialog(@StringRes id:Int)
-
+        fun isAutoLoginChecked():Boolean
+        fun startMainActivity()
         @TestOnly
         fun showLoginErrorToast(@StringRes id:Int)
-
-
         fun finish()
-
     }
 
     interface Presenter : BasePresenter {
+
         fun checkNetwork()
         fun setNaverLoginModule()
         fun setKakaoLoginModule()
         fun successOnKakao(@Nullable result: AccessTokenInfoResponse?)
-        fun successOnNaver()
-        fun success()
+        fun onLoginSuccess()
         fun alertNetworkDisconnected()
         fun alertWrongPassword()
         fun alertSessionClosed()
-        fun alertFailedOnKakako(e:ErrorResult)
-
-        fun logoutKakao()
-        fun logoutNaver()
+        fun alertFailedOnKakao(e:ErrorResult)
+        fun logout()
     }
+
 }

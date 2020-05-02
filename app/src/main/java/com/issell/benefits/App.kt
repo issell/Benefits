@@ -1,18 +1,16 @@
-package com.issell.benefits.login.kakao
+package com.issell.benefits
 
 import android.app.Application
+import com.issell.benefits.util.AppSharedPreferences
 import com.kakao.auth.*
-import java.lang.IllegalArgumentException
 
 class App : Application() {
-
+    init {
+        INSTANCE = this
+    }
     companion object {
-        private var instance: App? = null
-        fun getInstance(): App {
-            if (instance == null)
-                throw IllegalArgumentException("Don't use getInstance() until onCreate() is finished. ")
-            return instance!!
-        }
+        lateinit var INSTANCE: App
+        lateinit var prefs: AppSharedPreferences
     }
 
     class ConfigAdapter : KakaoAdapter() {
@@ -29,18 +27,15 @@ class App : Application() {
         }
         override fun getApplicationConfig(): IApplicationConfig {
             return IApplicationConfig {
-                getInstance()
+                INSTANCE
             }
         }
     }
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        prefs = AppSharedPreferences(applicationContext)
+        INSTANCE = this
     }
 
-    override fun onTerminate() {
-        super.onTerminate()
-        instance = null
-    }
 }

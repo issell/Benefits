@@ -1,4 +1,4 @@
-package com.issell.benefits.customview
+package com.issell.benefits.customview.dialog
 
 import android.content.Context
 import android.graphics.Point

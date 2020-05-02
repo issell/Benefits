@@ -13,6 +13,11 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.issell.benefits"
         minSdkVersion 26
@@ -23,7 +28,7 @@ android {
         // should correspond to key/value pairs inside the file
         buildConfigField("String", "NAVER_CLIENT_ID", apikeyProperties['NAVER_CLIENT_ID'])
         buildConfigField("String", "NAVER_CLIENT_SECRET", apikeyProperties['NAVER_CLIENT_SECRET'])
-        manifestPlaceholders = [KAKAO_NATIVE_APP_KEY:apikeyProperties['KAKAO_NATIVE_APP_KEY']]
+        manifestPlaceholders = [KAKAO_NATIVE_APP_KEY: apikeyProperties['KAKAO_NATIVE_APP_KEY']]
 
     }
     buildTypes {
@@ -72,6 +77,21 @@ dependencies {
 
     // Guava
     api("com.google.guava:guava:29.0-jre")
+
+    // OkHttp3
+    implementation 'com.squareup.okhttp3:okhttp:4.0.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.0.1'
+// Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
+// Json 파싱을 위한 Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+// RxJava2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
 
 }

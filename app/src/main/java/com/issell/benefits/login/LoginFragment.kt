@@ -1,79 +1,99 @@
 package com.issell.benefits.login
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
-
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.issell.benefits.R
-import com.issell.benefits.customview.DialogFactory
-import com.issell.benefits.customview.MyDialog
+import com.issell.benefits.main.MainActivity
+import com.issell.benefits.util.ActivityUtils
 import com.issell.progressbar.SimpleProgressBar
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-import java.lang.ClassCastException
+import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
-object LoginFragment : Fragment(), LoginContract.View{
-    private var presenter : LoginContract.Presenter? = null
+object LoginFragment : Fragment(), LoginContract.View {
+    private var p: LoginContract.Presenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = LoginPresenter(context!!, this)
-        Log.e("aa", "1111111111")
-        if(presenter != null) {
+        p = LoginPresenter(context!!, this)
+        if (p != null) {
             // View 에 Presenter 주입
-            if(presenter is LoginPresenter)
-                setPresenter(presenter!! as LoginPresenter)
-            else
-                throw ClassCastException("The presenter on LoginView is must the type of LoginPresenter.")
+            if (p is LoginPresenter) {
+                setPresenter(p!! as LoginPresenter)
+                p!!.start()
+            } else
+                throw ClassCastException("The p on LoginView is must the type of LoginPresenter.")
         }
-        presenter!!.start()
+
+    }
+
+    override fun setPresenter(presenter: LoginContract.Presenter) {
+        p = presenter
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val v = inflater.inflate(R.layout.fragment_login, container, false)
+
+        // remember_me 스위치 글자 색 수정/
+        v.remember_sw.setOnCheckedChangeListener { _, isChecked ->
+            view!!.remember_sw.setTextColor(
+                ContextCompat.getColor(
+                    context!!,
+                    if (isChecked)
+                        R.color.milkyWhite
+                    else
+                        android.R.color.darker_gray
+                )
+            )
+        }
+
+        // email, password 입력란의 포커스를 잃으면 -> soft keyboard 닫기
+        val focusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus)
+                hideKeyboard(v)
+        }
+        v.id_et.onFocusChangeListener = focusChangeListener
+        v.password_et.onFocusChangeListener = focusChangeListener
+        return v
     }
 
 
 
-    override fun setPresenter(presenter: LoginPresenter) {
-        this.presenter = presenter
-    }
-
-
-    override fun showNaverLoginButton(handler:OAuthLoginHandler) {
-        if(null != view)
-            view!!.findViewById<OAuthLoginButton>(R.id.naver_login_button).setOAuthLoginHandler(handler)
+    override fun showNaverLoginButton(handler: OAuthLoginHandler) {
+        if (null != view)
+            view!!.findViewById<OAuthLoginButton>(R.id.naver_login_button).setOAuthLoginHandler(
+                handler
+            )
     }
 
     override fun createProgressbar(): SimpleProgressBar {
         val iActivity = activity as LoginActivity
-        return SimpleProgressBar(iActivity,
-            R.drawable.rotate_progress, /*width:*/350, /*height:*/350)
+        return SimpleProgressBar(
+            iActivity,
+            R.drawable.rotate_progress, /*width:*/350, /*height:*/350
+        )
     }
 
-    override fun showLoginErrorDialog(@StringRes id:Int) {
-        val oneButtonDialog = DialogFactory.makeErrorDialog(
+    override fun showLoginErrorDialog(@StringRes id: Int) {
+        ActivityUtils.showErrorDialog(
+            activity!!,
             R.string.error_internet_title,
             id,
-            R.string.error_internet_button_text,
-            object : MyDialog.ButtonDialogAction {
-                override fun onButtonClicked() {
-                    SystemClock.sleep(400)
-                    if(activity != null)
-                        activity!!.finish()
-                }
-            })
-        oneButtonDialog.show(activity!!.supportFragmentManager, MyDialog.TAG)
+            R.string.error_internet_button_text
+        )
     }
 
     override fun showLoginErrorToast(@StringRes id: Int) {
@@ -86,12 +106,35 @@ object LoginFragment : Fragment(), LoginContract.View{
 
     override fun onResume() {
         super.onResume()
-        presenter!!.start()
+        p!!.start()
     }
+
 
     override fun finish() {
-        finish()
+        if (activity == null) {
+            return
+        }
+        activity!!.finish()
     }
 
+    override fun isAutoLoginChecked(): Boolean {
+        if (view == null)
+            return false
+        return view!!.remember_sw.isChecked
+    }
 
+    private fun hideKeyboard(view: View) {
+        if (activity == null)
+            return
+        val inputMethodManager =
+            activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun startMainActivity() {
+        val intent = Intent(context, MainActivity::class.java)
+        intent.putExtra("email", "") // TODO
+        startActivity(intent)
+        finish()
+    }
 }

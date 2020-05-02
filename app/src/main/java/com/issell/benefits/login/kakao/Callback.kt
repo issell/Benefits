@@ -13,7 +13,7 @@ class Callback(private val context: Context, private val presenter: LoginContrac
         if (result == ErrorCode.CLIENT_ERROR_CODE.errorCode) {
             presenter.alertNetworkDisconnected()
         } else {
-            presenter.alertFailedOnKakako(errorResult)
+            presenter.alertFailedOnKakao(errorResult)
         }
     }
 

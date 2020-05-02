@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Benefits</string>
-    <string name="msg_login">로그인</string>
-    <string name="msg_put_id">아이디를 입력하세요.</string>
-    <string name="msg_put_password">패스워드를 입력하세요.</string>
 
     <!--Success Dialog-->
-    <string name="success_title">성공~!</string>
-    <string name="success_message">작업을 수행했습니다. =D.</string>
-    <string name="success_button_text">응, 그래</string>
-    <string name="content_description_base_dialog_icon">Imagem do Diálogo</string>
 
     <!--Error Dialog-->
-    <string name="error_title">에러 :/</string>
     <string name="error_message">작업을 정상적으로\n수행하지 못했습니다.</string>
-    <string name="error_button_text">응, 알았어</string>
 
     <!-- Internet Connection Error Dialog -->
     <string name="error_internet_title">에러 :/</string>
-    <string name="error_internet_message">인터넷 연결이 원활하지 않습니다.\n연결 후 다시 접속해주세요.</string>
     <string name="error_internet_button_text">종료합니다</string>
+
+    <!-- Login View -->
+    <string name="login_layout_hint_email">email</string>
+    <string name="login_layout_hint_password">password</string>
+    <string name="login_auto">자동 로그인</string>
+    <string name="login_sign_in">Login</string>
+    <string name="login_sign_up">가입</string>
+    <string name="login_find_password">비밀번호 찾기</string>
 
     <!-- Login Error -->
     <string name="login_error_network_failed">네트워크 연결이 불안정합니다. 다시 시도해 주세요.</string>
     <string name="login_error_on_process">로그인 도중 오류가 발생했습니다</string>
     <string name="login_error_wrong_password">잘못된 비밀번호입니다.</string>
     <string name="login_error_session_closed">세션이 닫혔습니다. 다시 시도해 주세요.</string>
+
+    <!-- Auto Login Error -->
+    <string name="auto_login_error_title">자동 로그인 실패 :/</string>
+    <string name="auto_login_error_auth_expired">인증 기간이 만료되었습니다.\n다시 로그인 해주세요.</string>
+    <string name="auto_login_error_button_text">로그인으로!</string>
+
+    <!-- Main -->
+    <string name="main_logout_button_text">로그아웃</string>
+    <string name="main_logout_success_title">Success :=)</string>
+    <string name="main_logout_success_message">로그아웃을 완료하였습니다!</string>
+    <string name="main_logout_success_button_text">확인</string>
 </resources>
