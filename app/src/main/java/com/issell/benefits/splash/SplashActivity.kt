@@ -20,20 +20,22 @@ class SplashActivity : FragmentActivity(), SplashContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_splash)
-
-        // 애니메이션 로드
         val topAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.splash_top_anim)
         val bottomAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.splash_bottom_anim)
-
-        // 위 3개 이미지는 topAnim, 아래 텍스트 2개는 bottomAnim 적용
         imageView.animation = topAnim
         imageView2.animation = bottomAnim
 
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         // p 주입
         p = SplashPresenter(this, this)
         if (p != null) {
@@ -43,11 +45,9 @@ class SplashActivity : FragmentActivity(), SplashContract.View {
                 p!!.start()
             }
             else
-                throw ClassCastException("The p on SplashVIew must be type of SplashPresenter.")
+                throw ClassCastException("The presenter in SplashVIew must be type of SplashPresenter.")
         }
     }
-
-
 
     override fun finish() {
         super.finish()
