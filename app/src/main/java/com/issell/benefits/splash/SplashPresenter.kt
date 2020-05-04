@@ -26,7 +26,7 @@ constructor(
         else {
             android.os.Handler().postDelayed(
                 {
-                    splashView.startLoginActivity()
+                    splashView.startActivityWithLoginFragment()
                 }, MILLI_DELAYED
             )
         }
@@ -65,14 +65,14 @@ constructor(
             NaverAuthHandler.sendRequestToRefresh(this)
         }
         else {
-            splashView.startMainActivity()
+            splashView.startActivityWithMainFragment()
         }
     }
 
     fun onFinishRefresh() {
         if (App.prefs.autoLogin) {
             SessionManager.saveCurrentSession()
-            splashView.startMainActivity()
+            splashView.startActivityWithMainFragment()
         }
     }
 

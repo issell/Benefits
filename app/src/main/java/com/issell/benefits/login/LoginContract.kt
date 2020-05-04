@@ -13,29 +13,23 @@ import org.jetbrains.annotations.TestOnly
 
 interface LoginContract {
     interface View : BaseView<Presenter> {
-
         fun showNaverLoginButton(handler: OAuthLoginHandler)
-
         fun createProgressbar(): SimpleProgressBar
+        fun showProgressbar(progressBar: SimpleProgressBar) = progressBar.on()
+        fun hideProgressbar(progressBar: SimpleProgressBar) = progressBar.off()
+        fun showLoginErrorDialog(@StringRes id: Int)
+        fun isAutoLoginChecked(): Boolean
+        fun startBenefitsFragment()
+        fun startSignupFragment()
 
-        fun showProgressbar(progressBar: SimpleProgressBar) {
-            progressBar.on()
-        }
-
-        fun hideProgressbar(progressBar: SimpleProgressBar) {
-            progressBar.off()
-        }
-
-        fun showLoginErrorDialog(@StringRes id:Int)
-        fun isAutoLoginChecked():Boolean
-        fun startMainActivity()
-        @TestOnly
-        fun showLoginErrorToast(@StringRes id:Int)
         fun finish()
+
+        @TestOnly
+        fun showLoginErrorToast(@StringRes id: Int)
+
     }
 
     interface Presenter : BasePresenter {
-
         fun checkNetwork()
         fun setNaverLoginModule()
         fun setKakaoLoginModule()
@@ -44,8 +38,7 @@ interface LoginContract {
         fun alertNetworkDisconnected()
         fun alertWrongPassword()
         fun alertSessionClosed()
-        fun alertFailedOnKakao(e:ErrorResult)
-        fun logout()
+        fun alertFailedOnKakao(e: ErrorResult)
     }
 
 }

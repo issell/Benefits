@@ -10,79 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
             android:id="@+id/naver_login_button"
-            style="@style/LoginButton"
-            android:layout_width="145dp"
-            android:layout_height="48dp"
+            style="@style/WideButton"
+            android:layout_width="0dp"
+            android:layout_height="71dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/login_bt"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="@id/login_bt"
             app:layout_constraintTop_toBottomOf="@+id/login_bt"
-            app:layout_constraintVertical_bias="0.054" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.kakao.usermgmt.LoginButton
             android:id="@+id/kakao_login_button"
-            style="@style/LoginButton"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/naver_login_button"
+            style="@style/WideButton"
+            android:layout_width="289dp"
+            android:layout_height="71dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/login_bt"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/naver_login_button"
-            app:layout_constraintTop_toTopOf="@+id/naver_login_button"
+            app:layout_constraintStart_toStartOf="@+id/naver_login_button"
+            app:layout_constraintTop_toBottomOf="@+id/naver_login_button"
             app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="108dp"
-            android:layout_height="108dp"
-            android:layout_marginTop="68dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/rotate_progress" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView"
-            style="@style/Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:fontFamily="sans-serif-condensed-light"
-            android:padding="8dp"
-            android:shadowColor="#EE313031"
-            android:shadowDx="16"
-            android:shadowDy="16"
-            android:shadowRadius="50"
-            android:text="@string/app_name"
-            android:textColor="@color/milkyWhite"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_l"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_layout_hint_email"
-            android:theme="@style/LoginLayout"
-            app:layout_constraintBottom_toTopOf="@+id/naver_login_button"
+            android:theme="@style/MyTextInputLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/password_l"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/password_l"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.283">
+            app:layout_constraintTop_toBottomOf="@id/remember_sw"
+            app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/id_et"
-                style="@style/LoginEditText"
+                android:id="@+id/email_et"
+                style="@style/MyEditText"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,15 +63,17 @@
             android:layout_height="wrap_content"
             android:hint="@string/login_layout_hint_password"
 
-            android:theme="@style/LoginLayout"
+            android:theme="@style/MyTextInputLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/login_bt"
-            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/login_bt"
-            app:layout_constraintTop_toBottomOf="@+id/email_l">
+            app:layout_constraintTop_toBottomOf="@id/email_l"
+            app:layout_constraintVertical_bias="0.0">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_et"
-                style="@style/LoginEditText"
+                style="@style/MyEditText"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,60 +83,63 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/login_auto"
-            app:layout_constraintBottom_toTopOf="@+id/naver_login_button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/email_l"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.134"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/login_bt"
-            style="com.google.android.material.button.MaterialButton"
-            android:layout_width="291dp"
-            android:layout_height="64dp"
-            android:background="@drawable/outline_rounded2"
-            android:padding="4dp"
+            style="@style/WideButton"
             android:text="@string/login_sign_in"
             android:textColor="@color/milkyWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.58" />
+            app:layout_constraintTop_toBottomOf="@id/password_l"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/textView3"
-            style="@style/LoginSmallTextView"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_sign_up"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            app:layout_constraintBottom_toBottomOf="@+id/remember_sw"
-            app:layout_constraintEnd_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="@+id/remember_sw" />
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kakao_login_button">
 
-        <TextView
-            android:id="@+id/textView4"
-            style="@style/LoginSmallTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="|"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
-            app:layout_constraintEnd_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
-        <TextView
-            android:id="@+id/textView5"
-            style="@style/LoginSmallTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login_find_password"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="@+id/password_l"
-            app:layout_constraintTop_toTopOf="@+id/textView4" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/go_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_sign_up"
+                android:textColor="@color/milkyWhite"
+                app:layout_constraintEnd_toStartOf="@id/line"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:text="|"
+                android:textColor="@color/milkyWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/go_find_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_find_password"
+                android:textColor="@color/milkyWhite"
+                app:layout_constraintStart_toEndOf="@id/line"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

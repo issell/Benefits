@@ -7,7 +7,10 @@ import com.issell.benefits.R
 import com.issell.benefits.login.kakao.Callback
 import com.issell.benefits.login.naver.NaverLoginHandler
 import com.issell.benefits.session.SessionManager
-import com.kakao.auth.*
+import com.kakao.auth.AuthService
+import com.kakao.auth.ISessionCallback
+import com.kakao.auth.KakaoSDK
+import com.kakao.auth.Session
 import com.kakao.auth.network.response.AccessTokenInfoResponse
 import com.kakao.network.ErrorResult
 import com.kakao.util.exception.KakaoException
@@ -101,14 +104,10 @@ constructor(
 
 
     override fun onLoginSuccess() {
-        if(loginView.isAutoLoginChecked()){
+        if (loginView.isAutoLoginChecked()) {
             SessionManager.saveCurrentSession()
         }
-        loginView.startMainActivity()
+        loginView.startBenefitsFragment()
     }
 
-
-    override fun logout() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 }

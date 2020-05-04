@@ -22,7 +22,7 @@
         <item name="android:padding">3dp</item>
     </style>
 
-    <style name="LoginLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="MyTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="colorControlNormal">@color/milkyWhite</item>
         <item name="colorControlActivated">@color/milkyWhite</item>
         <item name="android:letterSpacing">0.2</item>
@@ -35,7 +35,7 @@
         <item name="boxStrokeWidth">2dp</item>
     </style>
 
-    <style name="LoginEditText" >
+    <style name="MyEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/milkyWhite</item>
@@ -76,6 +76,13 @@
         <item name="android:windowExitAnimation">@anim/dialog_out_anim</item>
     </style>
 
-
+    <style name="WideButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/outline_rounded2</item>
+        <item name="android:layout_width">@dimen/button_wide_width</item>
+        <item name="android:layout_height">@dimen/button_wide_height</item>
+        <item name="android:textColor">@color/milkyWhite</item>
+        <item name="android:textSize">16.8sp</item>
+        <item name="android:padding">4dp</item>
+    </style>
 
 </resources>

@@ -35,4 +35,10 @@
     <string name="main_logout_success_title">Success :=)</string>
     <string name="main_logout_success_message">로그아웃을 완료하였습니다!</string>
     <string name="main_logout_success_button_text">확인</string>
+
+    <!-- Sign Up -->
+    <string name="signup_email_hint">이메일을 입력하세요.</string>
+    <string name="signup_password_hint">암호를 입력하세요.(8자 이상 20자 이하)</string>
+    <string name="signup_password2_hint">암호를 재입력하세요.</string>
+    <string name="signup_commit_button_text">Sign Up</string>
 </resources>

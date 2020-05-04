@@ -4,12 +4,12 @@ import com.issell.benefits.BasePresenter
 import com.issell.benefits.BaseView
 
 interface MainContract {
-    interface View:BaseView<Presenter>{
-        fun startLoginActivity()
-        fun showLogoutSuccessDialog()
+    interface View : BaseView<Presenter> {
+        fun startBenefitsFragment()
+        fun startSignupFragment()
+        fun startLoginFragment()
     }
-    interface Presenter:BasePresenter{
-        fun logout()
-        fun completeDeletion()
-    }
+
+    interface Presenter : BasePresenter
+
 }

@@ -5,8 +5,8 @@ import com.issell.benefits.BaseView
 
 interface SplashContract{
     interface View:BaseView<Presenter>{
-        fun startLoginActivity()
-        fun startMainActivity()
+        fun startActivityWithLoginFragment()
+        fun startActivityWithMainFragment()
         fun showAutoLoginErrorDialog()
     }
 

@@ -4,7 +4,7 @@ import android.os.SystemClock
 import android.util.Log
 import com.issell.benefits.App
 import com.issell.benefits.BuildConfig
-import com.issell.benefits.main.MainPresenter
+import com.issell.benefits.benefits.MainPresenter
 import com.issell.benefits.session.SessionManager
 import com.issell.benefits.splash.SplashPresenter
 import retrofit2.Call

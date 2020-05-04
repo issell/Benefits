@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="background_content_margin">8dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="dialog_horizontal_margin">12.4dp</dimen>
     <dimen name="dialog_vertical_margin">12.4dp</dimen>
@@ -7,6 +8,8 @@
     <dimen name="dialog_test_size">17.8sp</dimen>
     <dimen name="dialog_button_text_size">17.8sp</dimen>
 
+    <dimen name="button_wide_width">291dp</dimen>
+    <dimen name="button_wide_height">64dp</dimen>
     <!--dialog_one_button-->
     <!--dialog_one_button-->
 

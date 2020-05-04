@@ -1,21 +1,19 @@
-package com.issell.benefits.main
+package com.issell.benefits.benefits
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.issell.benefits.R
 import com.issell.benefits.customview.dialog.MyDialog
-import com.issell.benefits.login.LoginActivity
+import com.issell.benefits.main.MainActivity
 import com.issell.benefits.util.ActivityUtils
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import java.lang.NullPointerException
 
-object MainFragment : Fragment(), MainContract.View {
-    private var p: MainContract.Presenter? = null
+object MainFragment : Fragment(), BenefitsContract.View {
+    private var p: BenefitsContract.Presenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +42,12 @@ object MainFragment : Fragment(), MainContract.View {
         return v
     }
 
-    override fun setPresenter(presenter: MainContract.Presenter) {
+    override fun setPresenter(presenter: BenefitsContract.Presenter) {
         p = presenter
     }
 
     override fun startLoginActivity() {
-        startActivity(Intent(context, LoginActivity::class.java))
+        startActivity(Intent(context, MainActivity::class.java))
     }
 
     override fun showLogoutSuccessDialog() {

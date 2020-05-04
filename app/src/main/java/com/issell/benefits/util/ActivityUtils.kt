@@ -1,6 +1,9 @@
 package com.issell.benefits.util
 
+import android.app.Activity
 import android.os.SystemClock
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.NonNull
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
@@ -14,14 +17,28 @@ import com.issell.benefits.customview.dialog.MyDialog
 
 object ActivityUtils {
 
+
     fun addFragmentToActivity(
         @NonNull fragmentManager: FragmentManager,
-        @NonNull fragment: Fragment, frameId: Int
+        @NonNull fragment: Fragment,
+        frameId: Int
     ) {
         checkNotNull(fragmentManager)
         checkNotNull(fragment)
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
-        transaction.add(frameId, fragment)
+        transaction.add(frameId, fragment, fragment.javaClass.name)
+        transaction.commit()
+    }
+
+    fun replaceFragmentToActivity(
+        @NonNull fragmentManager: FragmentManager,
+        @NonNull fragment: Fragment,
+        frameId: Int
+    ) {
+        checkNotNull(fragmentManager)
+        checkNotNull(fragment)
+        val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+        transaction.replace(frameId, fragment, fragment.javaClass.name)
         transaction.commit()
     }
 
@@ -56,5 +73,11 @@ object ActivityUtils {
                 buttonId,
                 action)
         }
+    }
+
+    fun hideKeyboard(@NonNull activity: Activity, view: View) {
+        val inputMethodManager =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

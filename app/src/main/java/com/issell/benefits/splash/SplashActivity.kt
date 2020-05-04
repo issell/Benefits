@@ -7,7 +7,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.FragmentActivity
 import com.issell.benefits.R
-import com.issell.benefits.login.LoginActivity
 import com.issell.benefits.main.MainActivity
 import com.issell.benefits.util.ActivityUtils
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -29,9 +28,6 @@ class SplashActivity : FragmentActivity(), SplashContract.View {
         val bottomAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.splash_bottom_anim)
         imageView.animation = topAnim
         imageView2.animation = bottomAnim
-
-
-
     }
 
     override fun onResume() {
@@ -45,7 +41,7 @@ class SplashActivity : FragmentActivity(), SplashContract.View {
                 p!!.start()
             }
             else
-                throw ClassCastException("The presenter in SplashVIew must be type of SplashPresenter.")
+                throw ClassCastException("The type of presenter in SplashVIew must be SplashPresenter.")
         }
     }
 
@@ -55,15 +51,17 @@ class SplashActivity : FragmentActivity(), SplashContract.View {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
-    override fun startLoginActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
+    override fun startActivityWithLoginFragment() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(MainActivity.FRAGMENT_FLAG, MainActivity.FRAGMENT_FLAG_LOGIN)
         startActivity(intent)
         finish()
     }
 
-    override fun startMainActivity() {
+    override fun startActivityWithMainFragment() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("email", "") // TODO
+        intent.putExtra(MainActivity.FRAGMENT_FLAG, MainActivity.FRAGMENT_FLAG_MAIN)
+        intent.putExtra("email", "")
         startActivity(intent)
         finish()
     }

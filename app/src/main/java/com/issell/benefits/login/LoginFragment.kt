@@ -1,18 +1,16 @@
 package com.issell.benefits.login
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.issell.benefits.R
 import com.issell.benefits.main.MainActivity
+import com.issell.benefits.main.MainContract
 import com.issell.benefits.util.ActivityUtils
 import com.issell.progressbar.SimpleProgressBar
 import com.nhn.android.naverlogin.OAuthLoginHandler
@@ -60,16 +58,15 @@ object LoginFragment : Fragment(), LoginContract.View {
             )
         }
 
-        // email, password 입력란의 포커스를 잃으면 -> soft keyboard 닫기
-        val focusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-            if (!hasFocus)
-                hideKeyboard(v)
+
+        v.email_et.onFocusChangeListener = (activity!! as MainActivity).keyboardHider
+        v.password_et.onFocusChangeListener = (activity!! as MainActivity).keyboardHider
+
+        v.go_signup.setOnClickListener {
+            startSignupFragment()
         }
-        v.id_et.onFocusChangeListener = focusChangeListener
-        v.password_et.onFocusChangeListener = focusChangeListener
         return v
     }
-
 
 
     override fun showNaverLoginButton(handler: OAuthLoginHandler) {
@@ -80,7 +77,7 @@ object LoginFragment : Fragment(), LoginContract.View {
     }
 
     override fun createProgressbar(): SimpleProgressBar {
-        val iActivity = activity as LoginActivity
+        val iActivity = activity as MainActivity
         return SimpleProgressBar(
             iActivity,
             R.drawable.rotate_progress, /*width:*/350, /*height:*/350
@@ -123,18 +120,12 @@ object LoginFragment : Fragment(), LoginContract.View {
         return view!!.remember_sw.isChecked
     }
 
-    private fun hideKeyboard(view: View) {
-        if (activity == null)
-            return
-        val inputMethodManager =
-            activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
-        inputMethodManager!!.hideSoftInputFromWindow(view.windowToken, 0)
+
+    override fun startBenefitsFragment() {
+        (activity!! as MainContract.View).startBenefitsFragment()
     }
 
-    override fun startMainActivity() {
-        val intent = Intent(context, MainActivity::class.java)
-        intent.putExtra("email", "") // TODO
-        startActivity(intent)
-        finish()
+    override fun startSignupFragment() {
+        (activity!! as MainContract.View).startSignupFragment()
     }
 }
