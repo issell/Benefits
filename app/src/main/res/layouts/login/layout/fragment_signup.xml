@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         style="@style/MyTextInputLayout"
         android:hint="@string/signup_email_hint"
-        app:helperText="@string/signup_error_email_required"
+        app:errorEnabled="true"
+        app:helperText="@string/signup_helper_text_email_required"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/signup_password_hint"
         style="@style/MyTextInputLayout"
-        app:helperText="@string/signup_error_password_required"
+        app:helperText="@string/signup_helper_text_password_required"
+        app:errorEnabled="true"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +59,8 @@
         style="@style/MyTextInputLayout"
         app:counterEnabled="true"
         app:counterMaxLength="20"
-        app:helperText="@string/signup_error_password2_required"
+        app:helperText="@string/signup_helper_text_password2_required"
+        app:errorEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +74,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signup_commit_btn"
         style="@style/WideButton"
         android:layout_width="@dimen/button_wide_width"
         android:layout_height="wrap_content"

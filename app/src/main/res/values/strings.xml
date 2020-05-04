@@ -41,6 +41,9 @@
     <string name="signup_password_hint">Password</string>
     <string name="signup_password2_hint">Password again.</string>
     <string name="signup_commit_button_text">Sign Up</string>
+    <string name="signup_helper_text_email_required">Put your valid email address.</string>
+    <string name="signup_helper_text_password_required">8 to 20 letters.</string>
+    <string name="signup_helper_text_password2_required">Not same password.</string>
     <string name="signup_error_email_required">Put your valid email address.</string>
     <string name="signup_error_password_required">8 to 20 letters.</string>
     <string name="signup_error_password2_required">Not same password.</string>
