@@ -37,8 +37,11 @@
     <string name="main_logout_success_button_text">Okay!</string>
 
     <!-- Sign Up -->
-    <string name="signup_email_hint">Put your valid email address.</string>
-    <string name="signup_password_hint">Put your password. (8 to 20 letters.)</string>
-    <string name="signup_password2_hint">Put your password again.</string>
+    <string name="signup_email_hint">Email</string>
+    <string name="signup_password_hint">Password</string>
+    <string name="signup_password2_hint">Password again.</string>
     <string name="signup_commit_button_text">Sign Up</string>
+    <string name="signup_error_email_required">Put your valid email address.</string>
+    <string name="signup_error_password_required">8 to 20 letters.</string>
+    <string name="signup_error_password2_required">Not same password.</string>
 </resources>

@@ -9,7 +9,7 @@
     <dimen name="dialog_button_text_size">17.8sp</dimen>
 
     <dimen name="button_wide_width">291dp</dimen>
-    <dimen name="button_wide_height">64dp</dimen>
+    <dimen name="button_wide_height">54dp</dimen>
     <!--dialog_one_button-->
     <!--dialog_one_button-->
 

@@ -13,9 +13,9 @@
 
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
             android:id="@+id/naver_login_button"
-            style="@style/WideButton"
             android:layout_width="0dp"
             android:layout_height="71dp"
+            style="@style/WideButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/login_bt"
             app:layout_constraintHorizontal_bias="0.0"
@@ -25,8 +25,8 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <com.kakao.usermgmt.LoginButton
-            android:id="@+id/kakao_login_button"
             style="@style/WideButton"
+            android:id="@+id/kakao_login_button"
             android:layout_width="289dp"
             android:layout_height="71dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,10 +40,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_l"
+            style="@style/MyTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_layout_hint_email"
-            android:theme="@style/MyTextInputLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/password_l"
             app:layout_constraintHorizontal_bias="0.0"
@@ -59,11 +59,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_l"
+            style="@style/MyTextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/login_layout_hint_password"
-
-            android:theme="@style/MyTextInputLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/login_bt"
             app:layout_constraintHorizontal_bias="0.0"
@@ -88,9 +87,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/login_bt"
+        <androidx.appcompat.widget.AppCompatButton
             style="@style/WideButton"
+            android:id="@+id/login_bt"
             android:text="@string/login_sign_in"
             android:textColor="@color/milkyWhite"
             app:layout_constraintBottom_toBottomOf="parent"

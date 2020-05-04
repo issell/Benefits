@@ -1,6 +1,5 @@
 package com.issell.benefits.benefits
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.issell.benefits.R
 import com.issell.benefits.customview.dialog.MyDialog
-import com.issell.benefits.main.MainActivity
+import com.issell.benefits.main.MainContract
 import com.issell.benefits.util.ActivityUtils
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
@@ -47,7 +46,7 @@ object MainFragment : Fragment(), BenefitsContract.View {
     }
 
     override fun startLoginActivity() {
-        startActivity(Intent(context, MainActivity::class.java))
+        (activity!! as MainContract.View).startLoginFragment()
     }
 
     override fun showLogoutSuccessDialog() {

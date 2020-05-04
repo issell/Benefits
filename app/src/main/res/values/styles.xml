@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="@style/Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -22,23 +22,24 @@
         <item name="android:padding">3dp</item>
     </style>
 
-    <style name="MyTextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="colorControlNormal">@color/milkyWhite</item>
-        <item name="colorControlActivated">@color/milkyWhite</item>
+        <item name="android:colorControlActivated">@color/colorPrimaryDark</item>
         <item name="android:letterSpacing">0.2</item>
         <item name="android:ems">10</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">@color/milkyWhite</item>
-        <item name="android:textColorHint">@color/milkyWhite</item>
+        <item name="hintTextColor">@color/milkyWhite</item>
         <item name="android:fontFamily">@font/amiko</item>
-        <item name="boxStrokeColor">#fff</item>
         <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeColor">@color/milkyWhite</item>
+        <item name="helperTextTextColor">@android:color/holo_red_light</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="MyEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/milkyWhite</item>
         <item name="android:fontFamily">@font/amiko</item>
     </style>
 
@@ -63,7 +64,7 @@
 
 
     <!-- etc button (neutral) -->
-    <style name="MediumButton" parent="@android:style/Widget.Button">
+    <style name="MediumButton" parent="Widget.MaterialComponents.Button">
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@string/font_family_light</item>
         <item name="android:background">@drawable/outline_rounded</item>

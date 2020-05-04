@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 setPresenter(p!! as MainPresenter)
                 p!!.start()
             } else
-                throw ClassCastException("The p on LoginView is must the type of LoginPresenter.")
+                throw ClassCastException("The type of Presenter on LoginView is must LoginPresenter.")
         }
 
         val state = intent.getIntExtra(

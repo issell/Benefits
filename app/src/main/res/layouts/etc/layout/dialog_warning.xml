@@ -10,7 +10,7 @@
     android:orientation="vertical"
     android:padding="@dimen/browser_actions_context_menu_min_padding">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

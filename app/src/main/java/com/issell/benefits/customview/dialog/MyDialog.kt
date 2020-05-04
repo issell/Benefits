@@ -43,7 +43,7 @@ class MyDialog:DialogFragment() {
             args.putInt(ARG_BUTTON_TEXT, buttonTextRes)
             args.putInt(ARG_IMAGE_RESOURCE_ID, imageResId)
             args.putInt(ARG_COLOR_RESOURCE_ID, colorResId)
-            oneButtonDialog.setArguments(args)
+            oneButtonDialog.arguments = args
             return oneButtonDialog
         }
     }
@@ -73,8 +73,12 @@ class MyDialog:DialogFragment() {
 
         tvTitle.setText(titleRes)
         tvTitle.setTextColor(ContextCompat.getColor(view.context, color))
+
         tvMessage.setText(messageRes)
+        tvMessage.setTextColor(ContextCompat.getColor(view.context, color))
+
         btnNeutral.setText(buttonTextRes)
+        btnNeutral.setBackgroundColor(ContextCompat.getColor(view.context, color))
         btnNeutral.setOnClickListener {
             closeDialog()
             if (buttonDialogAction != null) {
