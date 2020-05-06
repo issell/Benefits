@@ -1,8 +1,21 @@
 package com.issell.benefits.join
 
+import android.content.Context
+import android.util.Log
+import com.issell.benefits.BuildConfig
+import com.issell.benefits.join.network.SignUp
+import com.issell.benefits.join.network.SignUpInterface
+import com.issell.benefits.util.ApiFactory
+import com.issell.benefits.util.sha256
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+
 
 class SignUpPresenter
 constructor(
+    private val context: Context,
     private val signUpView: SignUpContract.View
 ) : SignUpContract.Presenter {
     override fun start() {
@@ -25,4 +38,36 @@ constructor(
     }
 
 
+    override fun sendUserInfo(vo: SignUp) {
+        vo.password = vo.password.sha256()
+//        if (!NetworkStatus.isNetworkConnected(context)) {
+//            ActivityUtils.showErrorDialog(
+//                (signUpView as Fragment).activity!!,
+//                R.string.error_internet_title,
+//                R.string.error_internet_message,
+//                R.string.error_internet_button_text
+//            )cmd
+//            return
+//        }
+        val observable =
+            Retrofit.Builder()
+                .baseUrl(BuildConfig.SERVER_BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(ApiFactory.gsonConverter)
+                .client(ApiFactory.client)
+                .build()
+                .create(SignUpInterface::class.java)!!
+                .doSignUp(vo)
+        val v = observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ res ->
+                if (res.result) {
+                    signUpView.showSignUpSuccessDialog()
+                }
+            }, { error ->
+                Log.e("ERROR", "ERROR on response. ${error.message}")
+            }
+            )
+
+    }
 }

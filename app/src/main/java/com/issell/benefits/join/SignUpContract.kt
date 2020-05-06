@@ -2,6 +2,7 @@ package com.issell.benefits.join
 
 import com.issell.benefits.BasePresenter
 import com.issell.benefits.BaseView
+import com.issell.benefits.join.network.SignUp
 
 interface SignUpContract {
     interface View : BaseView<Presenter> {
@@ -9,6 +10,8 @@ interface SignUpContract {
         // 가입 버튼 활성화
         fun activateCommitButton(on: Boolean)
 
+        // 회원가입 성공 메시지
+        fun showSignUpSuccessDialog()
     }
 
     interface Presenter : BasePresenter {
@@ -21,6 +24,8 @@ interface SignUpContract {
         // 두 비밀번호 일치 여부 검사
         fun checkEqualPasswords(s1: String, s2: String): Boolean
 
+        // 회원 정보 송신 + 비밀번호 암호화
+        fun sendUserInfo(vo: SignUp)
     }
 
 

@@ -31,10 +31,10 @@ object MainFragment : Fragment(), BenefitsContract.View {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v =  inflater.inflate(R.layout.fragment_main, container, false)
+        val v = inflater.inflate(R.layout.fragment_main, container, false)
 
-        v.logout_bt.setOnClickListener{
-            if(p == null)
+        v.logout_bt.setOnClickListener {
+            if (p == null)
                 throw NullPointerException("Presenter is null.")
             p!!.logout()
         }

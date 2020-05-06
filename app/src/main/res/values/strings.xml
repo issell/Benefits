@@ -9,6 +9,7 @@
 
     <!-- Internet Connection Error Dialog -->
     <string name="error_internet_title">Oh snap :/</string>
+    <string name="error_internet_message">Internet is disconnected.</string>
     <string name="error_internet_button_text">I\'ll be right back!</string>
 
     <!-- Login View-->
@@ -47,4 +48,7 @@
     <string name="signup_error_email_required">Put your valid email address.</string>
     <string name="signup_error_password_required">8 to 20 letters.</string>
     <string name="signup_error_password2_required">Not same password.</string>
+    <string name="signup_success_title">Success!</string>
+    <string name="signup_success_message">Your account is now available.</string>
+    <string name="signup_success_button">Go to Sign In.</string>
 </resources>
