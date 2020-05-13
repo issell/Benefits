@@ -51,4 +51,7 @@
     <string name="signup_success_title">가입 성공!</string>
     <string name="signup_success_message">회원가입을 완료하였습니다.</string>
     <string name="signup_success_button">로그인</string>
+    <string name="signup_failed_title">가입 실패..</string>
+    <string name="signup_failed_exist_message">이미 가입된 계정입니다.</string>
+    <string name="signup_failed_button">재시도.</string>
 </resources>

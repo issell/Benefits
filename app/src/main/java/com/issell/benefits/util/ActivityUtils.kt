@@ -49,29 +49,85 @@ object ActivityUtils {
         f().show(activity.supportFragmentManager, MyDialog.TAG)
     }
 
-    fun showErrorDialog(activity: FragmentActivity, @StringRes titleId: Int, @StringRes messageId: Int, @StringRes buttonId: Int,action:MyDialog.ButtonDialogAction?=null) {
+    fun showErrorDialog(
+        activity: FragmentActivity,
+        @StringRes titleId: Int,
+        @StringRes messageId: Int,
+        @StringRes buttonId: Int,
+        action: MyDialog.ButtonDialogAction? = null
+    ) {
         showDialog(activity) {
             DialogFactory.makeErrorDialog(
                 titleId,
                 messageId,
                 buttonId,
-                if(action == null)object : MyDialog.ButtonDialogAction {
+                if (action == null) object : MyDialog.ButtonDialogAction {
                     override fun onButtonClicked() {
                         SystemClock.sleep(400)
                         activity.finish()
                     }
-                }else action)
+                } else action
+            )
 
         }
     }
 
-    fun showSuccessDialog(activity: FragmentActivity, @StringRes titleId: Int, @StringRes messageId: Int, @StringRes buttonId: Int,  action:MyDialog.ButtonDialogAction) {
+    fun showErrorDialog(
+        activity: FragmentActivity,
+        titleId: CharSequence,
+        messageId: CharSequence,
+        buttonId: CharSequence,
+        action: MyDialog.ButtonDialogAction? = null
+    ) {
+        showDialog(activity) {
+            DialogFactory.makeErrorDialog(
+                titleId,
+                messageId,
+                buttonId,
+                if (action == null)
+                    object : MyDialog.ButtonDialogAction {
+                        override fun onButtonClicked() {
+                            SystemClock.sleep(400)
+                            activity.finish()
+                        }
+                    } else action
+            )
+
+        }
+    }
+
+
+    fun showSuccessDialog(
+        activity: FragmentActivity,
+        @StringRes titleId: Int,
+        @StringRes messageId: Int,
+        @StringRes buttonId: Int,
+        action: MyDialog.ButtonDialogAction
+    ) {
         showDialog(activity) {
             DialogFactory.makeSuccessDialog(
                 titleId,
                 messageId,
                 buttonId,
-                action)
+                action
+            )
+        }
+    }
+
+    fun showSuccessDialog(
+        activity: FragmentActivity,
+        title: CharSequence,
+        message: CharSequence,
+        button: CharSequence,
+        action: MyDialog.ButtonDialogAction
+    ) {
+        showDialog(activity) {
+            DialogFactory.makeSuccessDialog(
+                title,
+                message,
+                button,
+                action
+            )
         }
     }
 

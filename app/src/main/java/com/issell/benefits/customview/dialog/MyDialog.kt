@@ -24,7 +24,31 @@ class MyDialog:DialogFragment() {
         const val ARG_TITLE = "ARG_TITLE"
         const val ARG_MESSAGE = "ARG_MESSAGE"
         const val ARG_IMAGE_RESOURCE_ID = "ARG_IMAGE_RESOURCE_ID"
+        const val ARG_IS_STRING_ARGS = "ARG_IS_STRING_ARGS"
+
         private const val DIALOG_WINDOW_WIDTH = 0.85
+
+        fun newInstance(
+            title:CharSequence,
+            message:CharSequence,
+            buttonText:CharSequence,
+            @DrawableRes imageResId: Int,
+            @ColorRes colorResId: Int,
+            buttonDialogAction: ButtonDialogAction
+        ): MyDialog {
+            val oneButtonDialog = MyDialog()
+            oneButtonDialog.buttonDialogAction = buttonDialogAction
+
+            val args = Bundle()
+            args.putCharSequence(ARG_TITLE, title)
+            args.putCharSequence(ARG_MESSAGE, message)
+            args.putCharSequence(ARG_BUTTON_TEXT, buttonText)
+            args.putInt(ARG_IMAGE_RESOURCE_ID, imageResId)
+            args.putInt(ARG_COLOR_RESOURCE_ID, colorResId)
+            args.putBoolean(ARG_IS_STRING_ARGS, true)
+            oneButtonDialog.arguments = args
+            return oneButtonDialog
+        }
 
         fun newInstance(
             @StringRes titleRes: Int,
@@ -43,9 +67,11 @@ class MyDialog:DialogFragment() {
             args.putInt(ARG_BUTTON_TEXT, buttonTextRes)
             args.putInt(ARG_IMAGE_RESOURCE_ID, imageResId)
             args.putInt(ARG_COLOR_RESOURCE_ID, colorResId)
+            args.putBoolean(ARG_IS_STRING_ARGS, false)
             oneButtonDialog.arguments = args
             return oneButtonDialog
         }
+
     }
 
 
@@ -65,19 +91,30 @@ class MyDialog:DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val titleRes = arguments!!.getInt(ARG_TITLE)
-        val messageRes = arguments!!.getInt(ARG_MESSAGE)
-        val buttonTextRes = arguments!!.getInt(ARG_BUTTON_TEXT)
+        val isStringArgs = arguments!!.getBoolean(ARG_IS_STRING_ARGS)
+        if(isStringArgs){
+            val titleRes = arguments!!.getString(ARG_TITLE)
+            val messageRes = arguments!!.getString(ARG_MESSAGE)
+            val buttonTextRes = arguments!!.getString(ARG_BUTTON_TEXT)
+            tvTitle.text = titleRes
+            tvMessage.text = messageRes
+            btnNeutral.text = buttonTextRes
+        }
+        else {
+            val titleRes = arguments!!.getInt(ARG_TITLE)
+            val messageRes = arguments!!.getInt(ARG_MESSAGE)
+            val buttonTextRes = arguments!!.getInt(ARG_BUTTON_TEXT)
+            tvTitle.setText(titleRes)
+            tvMessage.setText(messageRes)
+            btnNeutral.setText(buttonTextRes)
+        }
+
         val image = arguments!!.getInt(ARG_IMAGE_RESOURCE_ID)
         val color = arguments!!.getInt(ARG_COLOR_RESOURCE_ID)
 
-        tvTitle.setText(titleRes)
+
         tvTitle.setTextColor(ContextCompat.getColor(view.context, color))
-
-        tvMessage.setText(messageRes)
         tvMessage.setTextColor(ContextCompat.getColor(view.context, color))
-
-        btnNeutral.setText(buttonTextRes)
         btnNeutral.setBackgroundColor(ContextCompat.getColor(view.context, color))
         btnNeutral.setOnClickListener {
             closeDialog()

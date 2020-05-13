@@ -116,5 +116,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun setPresenter(presenter: MainContract.Presenter) {
         p = presenter
     }
+
 }
 

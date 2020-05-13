@@ -51,4 +51,8 @@
     <string name="signup_success_title">Success!</string>
     <string name="signup_success_message">Your account is now available.</string>
     <string name="signup_success_button">Go to Sign In.</string>
+    <string name="signup_failed_title">Failed..</string>
+    <string name="signup_failed_exist_message">Your account is already exist.</string>
+    <string name="signup_failed_button">Retry.</string>
+
 </resources>

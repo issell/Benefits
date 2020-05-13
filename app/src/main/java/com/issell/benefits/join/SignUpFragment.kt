@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_signup.view.*
 object SignUpFragment : Fragment(), SignUpContract.View {
 
     private var p: SignUpContract.Presenter? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         p = SignUpPresenter(context!!, this)
@@ -58,7 +57,6 @@ object SignUpFragment : Fragment(), SignUpContract.View {
                 if (p!!.checkPassword(v.password_et.text.toString())) {
                     v.password_l.isErrorEnabled = false
                     v.password_l.error = null
-
                 } else {
                     check = false
                     v.password_l.isErrorEnabled = true
@@ -99,7 +97,7 @@ object SignUpFragment : Fragment(), SignUpContract.View {
             p!!.sendUserInfo(
                 SignUp(
                     v.email_et.text.toString(),
-                    v.password_et.toString()
+                    v.password_et.text.toString()
                 )
             )
         }
@@ -115,18 +113,40 @@ object SignUpFragment : Fragment(), SignUpContract.View {
         view!!.signup_commit_btn.isEnabled = on
     }
 
-    override fun showSignUpSuccessDialog() {
+    override fun showSignUpSuccessDialog(message:String) {
         ActivityUtils.showSuccessDialog(
             activity!!,
-            R.string.signup_success_title,
-            R.string.signup_success_message,
-            R.string.signup_success_button,
+            resources.getText(R.string.signup_success_title),
+            message,
+            resources.getText(R.string.signup_success_button),
             object : MyDialog.ButtonDialogAction {
                 override fun onButtonClicked() {
                     (activity!! as MainContract.View).startLoginFragment()
                 }
             }
         )
+    }
+
+    override fun showSignUpFailedDialog(message: String) {
+
+        ActivityUtils.showErrorDialog(
+            activity!!,
+            resources.getText(R.string.signup_failed_title),
+            message,
+            resources.getText(R.string.signup_failed_button),
+            object : MyDialog.ButtonDialogAction {
+                override fun onButtonClicked() {
+                    resetSignUpForm()
+                }
+            }
+        )
+    }
+
+    override fun resetSignUpForm() {
+        if (view == null) return
+        view!!.email_et.setText("")
+        view!!.password_et.setText("")
+        view!!.password2_et.setText("")
     }
 }
 

@@ -11,7 +11,12 @@ interface SignUpContract {
         fun activateCommitButton(on: Boolean)
 
         // 회원가입 성공 메시지
-        fun showSignUpSuccessDialog()
+        fun showSignUpSuccessDialog(message:String)
+
+        // 회원가입 실패 메시지
+        fun showSignUpFailedDialog(message:String)
+
+        fun resetSignUpForm()
     }
 
     interface Presenter : BasePresenter {
@@ -26,6 +31,8 @@ interface SignUpContract {
 
         // 회원 정보 송신 + 비밀번호 암호화
         fun sendUserInfo(vo: SignUp)
+
+
     }
 
 
